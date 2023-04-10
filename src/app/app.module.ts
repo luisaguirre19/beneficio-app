@@ -19,6 +19,9 @@ import { SolCuentaComponent } from './componentes/sol-cuenta/sol-cuenta.componen
 import { EnviosComponent } from './componentes/envios/envios.component';
 import { ProductoresComponent } from './componentes/productores/productores.component';
 import {MatTableModule} from '@angular/material/table';
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; // si estás usando ngModel
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import {MatTableModule} from '@angular/material/table';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatMenuModule,
@@ -44,7 +49,7 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from 'src/app/servicios/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,12 +8,20 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   username: string;
   password: string;
+  log:boolean=false
+  constructor(
+    private authService:AuthService,
+    ){}
 
-  onSubmit() {
-    if (this.username === 'usuario' && this.password === 'contraseña') {
-      // Iniciar sesión exitoso, redirigir a la página de inicio
-    } else {
-      // Mostrar un mensaje de error o realizar alguna otra acción
+
+  async onSubmit() {
+    this.log = await this.authService.login(this.username, this.password)
+    if(this.log){
+      alert("Bienvenido")
+    }else{
+      alert("Ingreso no autorizado")
     }
   }
+
+
 }

@@ -4,16 +4,17 @@
     <mat-card-title class="login-card-title1"><b>GUATEMALA DEV</b></mat-card-title>
     <mat-card-content >
       <mat-form-field class="card-c">
-        <input matInput placeholder="Correo:" type="text" id="username" name="username">
+        <input matInput placeholder="Correo:" type="mail"  [(ngModel)]="username">
       </mat-form-field>
       <div>
         <mat-form-field class="card-c">
-          <input matInput placeholder="Contraseña" type="password" id="password" name="password">
+          <input matInput placeholder="Contraseña" type="password" [(ngModel)]="password">
         </mat-form-field>
       </div>
     </mat-card-content>
     <!-- <mat-card-actions> -->
-      <button mat-flat-button color="primary">Ingresar</button>
+      <button mat-flat-button color="primary" (click)="onSubmit()">Ingresar</button>
+    
     <!-- </mat-card-actions> -->
   </mat-card>
 </div>
