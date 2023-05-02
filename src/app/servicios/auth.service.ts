@@ -25,7 +25,7 @@ export class AuthService {
 
   login(user:string, pass:string): Promise<boolean> {
     return new Promise((resolve, reject) => {
-       this.sqlService.postData([{
+       this.sqlService.postData("count",[{
         "operacion":"L",
         "sub_operacion":"V",
         "correo":user,

@@ -1,1 +1,48 @@
-<p>sol-cuenta works!</p>
+<mat-table [dataSource]="tableData">
+
+    <!-- Columna de ID -->
+    <ng-container matColumnDef="id_cuenta">
+      <mat-header-cell *matHeaderCellDef> Id Cuenta </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id_cuenta}} </mat-cell>
+    </ng-container>
+
+        <!-- Columna de Nombre -->
+    <ng-container matColumnDef="Etiqueta">
+        <mat-header-cell *matHeaderCellDef> Etiqueta </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.etiqueta}} </mat-cell>
+    </ng-container>
+  
+    <!-- Columna de Nombre -->
+    <ng-container matColumnDef="Peso">
+      <mat-header-cell *matHeaderCellDef> Peso </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.peso}} </mat-cell>
+    </ng-container>
+  
+    <!-- Columna de Correo Electrónico -->
+    <ng-container matColumnDef="Parcialidades">
+      <mat-header-cell *matHeaderCellDef> Parcialidades </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.parcialidades}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Estado">
+        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.estado}} </mat-cell>
+    </ng-container>
+
+        <!-- Columna de Acciones -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button color="success" (click)="activar_cuenta(element.id_cuenta)">
+                <mat-icon>done</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="desactivar_cuenta(element.id_cuenta)" >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+  </mat-table>

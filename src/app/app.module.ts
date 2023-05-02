@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // si estás usando ngModel
 import { AuthGuard } from './guards/auth.guard';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AuthGuard } from './guards/auth.guard';
     ProductoresComponent
   ],
   imports: [
+    MatDialogModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
