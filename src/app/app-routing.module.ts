@@ -7,6 +7,7 @@ import { SolCuentaComponent } from './componentes/sol-cuenta/sol-cuenta.componen
 import { EnviosComponent } from './componentes/envios/envios.component';
 import { ProductoresComponent } from './componentes/productores/productores.component';
 import { AuthGuard } from './guards/auth.guard';
+import { EstadoCuentaComponent } from './componentes/estado-cuenta/estado-cuenta.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'productores',
     component: ProductoresComponent,
+    canActivate: [AuthGuard] 
+  },
+  {
+    path: 'estado-cuenta',
+    component: EstadoCuentaComponent,
     canActivate: [AuthGuard] 
   }
   

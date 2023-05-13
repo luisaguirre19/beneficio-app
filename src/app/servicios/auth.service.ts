@@ -25,13 +25,10 @@ export class AuthService {
 
   login(user:string, pass:string): Promise<boolean> {
     return new Promise((resolve, reject) => {
-       this.sqlService.postData("count",[{
-        "operacion":"L",
-        "sub_operacion":"V",
+       this.sqlService.postData("count",{
         "correo":user,
         "pass":pass,
-        "sp":"principal_beneficio"
-      }])
+      })
       .subscribe(data=>{
         if(data[0].resp=="Si"){
           this.id_login = data[0].id_login

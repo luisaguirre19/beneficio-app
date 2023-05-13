@@ -20,6 +20,10 @@
         <mat-icon>handshake</mat-icon>
         <span>Productores</span>
       </button>
+      <button mat-menu-item [disabled] = "!log"  routerLink="/estado-cuenta" #productores>
+        <mat-icon>edit_document</mat-icon>
+        <span>Estado de cuenta</span>
+      </button>
     </mat-menu>
     <span class="example-spacer"></span>
     <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">person</mat-icon> -->

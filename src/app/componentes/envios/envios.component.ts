@@ -5,6 +5,9 @@ import * as pdfjsLib from 'pdfjs-dist';
 import { PDFDocumentProxy } from 'pdfjs-dist';
 import { GlobalWorkerOptions } from 'pdfjs-dist/build/pdf.worker.entry';
 import jsQR from 'jsqr';
+import { SqlService } from 'src/app/servicios/sql.service';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -13,55 +16,26 @@ import jsQR from 'jsqr';
   styleUrls: ['./envios.component.css']
 })
 export class EnviosComponent {
+  envios
+  displayedColumns: string[] = ['id_cuenta', 'id_envio', 'peso', 'estado', 'vehiculo'];
 
-  
-  constructor() {
-    // Set the workerSrc property to the location of the pdf.worker.js file
-    GlobalWorkerOptions.workerSrc = 'assets/pdf.worker.js';
+  constructor(
+    private sqlService:SqlService,
+    private authService:AuthService,
+    private dialog: MatDialog
+
+  ) {}
+
+  ngOnInit() {
+    this.traer_datos()
+
   }
-  async decodeQRFromPDF(event: Event) {
-    // file = event.target.files[0];
-    let file
-     const input = event.target as HTMLInputElement;
-     if (input.files && input.files.length > 0) {
-        file = input.files[0];
-       console.log('Selected file:', file);
-     }
-
-
-    const fileReader = new FileReader();
-    fileReader.readAsArrayBuffer(file);
-  
-    fileReader.onload = async (event) => {
-      const arrayBuffer = event.target.result as ArrayBuffer;
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-  
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const viewport = page.getViewport({ scale: 1 });
-  
-        const canvas = document.createElement('canvas');
-        const canvasContext = canvas.getContext('2d');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-  
-        const renderContext = {
-          canvasContext,
-          viewport,
-        };
-  
-        await page.render(renderContext).promise;
-  
-        const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
-        const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
-  
-        if (qrCode) {
-          console.log(qrCode.data);
-          return qrCode.data;
-        }
-      }
-    };
+  traer_datos(){
+     this.sqlService.getDataProductor('envios_benef').subscribe(resp=>{
+      console.log(resp)
+      this.envios = resp
+    })
   }
-  
+
   
 }

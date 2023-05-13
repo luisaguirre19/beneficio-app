@@ -23,6 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // si estás usando ngModel
 import { AuthGuard } from './guards/auth.guard';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EstadoCuentaComponent } from './componentes/estado-cuenta/estado-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     SolInscripcionComponent,
     SolCuentaComponent,
     EnviosComponent,
-    ProductoresComponent
+    ProductoresComponent,
+    EstadoCuentaComponent
   ],
   imports: [
     MatDialogModule,

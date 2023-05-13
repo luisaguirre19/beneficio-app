@@ -27,7 +27,6 @@ export class SolCuentaComponent {
  }
 
  activar_cuenta(id){
-  alert(id)
     this.sqlService.putData_productor("cuenta","id_generico",id,"correo",this.authService.correo_usuario,"estado","Cuenta creada")
     .subscribe(data=>{
           this.traer_datos()
