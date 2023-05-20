@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms'; // si estás usando ngModel
 import { AuthGuard } from './guards/auth.guard';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EstadoCuentaComponent } from './componentes/estado-cuenta/estado-cuenta.component';
+import { GuardiaComponent } from './componentes/guardia/guardia.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EstadoCuentaComponent } from './componentes/estado-cuenta/estado-cuenta
     SolCuentaComponent,
     EnviosComponent,
     ProductoresComponent,
-    EstadoCuentaComponent
+    EstadoCuentaComponent,
+    GuardiaComponent
   ],
   imports: [
     MatDialogModule,

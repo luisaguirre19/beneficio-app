@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
   constructor(private authService:AuthService,
     private router:Router
     ){}
@@ -19,6 +20,7 @@ export class HeaderComponent {
   // @ViewChild('envios') btnEnvios: MatButton;
   // @ViewChild('productores') btnProductores: MatButton;
   log:boolean = false
+  log_guardia:boolean = false
 
 
   ngOnInit() {
@@ -35,6 +37,15 @@ export class HeaderComponent {
       // this.btnProductores.disabled = !estado
       if(estado){
         this.router.navigate(['/sol-inscripcion'])
+      }else{
+        this.router.navigate(['/login'])
+      }
+    });
+
+    await this.authService.guardia_isAuthenticated.subscribe(estado => {
+      this.log_guardia = estado
+      if(estado){
+        this.router.navigate(['/guardia'])
       }else{
         this.router.navigate(['/login'])
       }

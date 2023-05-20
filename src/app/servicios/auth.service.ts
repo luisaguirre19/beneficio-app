@@ -10,6 +10,9 @@ export class AuthService {
   //public isAuthenticated: boolean = false;
   isAuthenticated = new Subject<boolean>();
   isAuthenticated_forGuard:boolean = false
+
+  guardia_isAuthenticated = new Subject<boolean>();
+  guardia_isAuthenticated_forGuard:boolean = false 
   public id_login
   public correo_usuario
   constructor(
@@ -33,8 +36,14 @@ export class AuthService {
         if(data[0].resp=="Si"){
           this.id_login = data[0].id_login
           this.correo_usuario = data[0].correo
-          this.isAuthenticated_forGuard = true;
-          this.isAuthenticated.next(true);
+          if(data[0].tipo !== 'G'){
+            this.isAuthenticated_forGuard = true;
+            this.isAuthenticated.next(true);
+          }else{
+            this.guardia_isAuthenticated_forGuard = true;
+            this.guardia_isAuthenticated.next(true);
+          }
+
           resolve (true)
         }else{
           this.logout()

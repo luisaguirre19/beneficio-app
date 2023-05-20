@@ -4,6 +4,10 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      <button mat-menu-item [disabled] = "!log_guardia"  routerLink="/guardia"  id="guardia" #solIns>
+        <mat-icon>security</mat-icon>
+        <span>Ingreso en garita</span>
+      </button>
       <button mat-menu-item [disabled] = "!log"  routerLink="/sol-inscripcion"  id="solIns" #solIns>
         <mat-icon>emoji_people</mat-icon>
         <span>Solicitudes de inscripción</span>

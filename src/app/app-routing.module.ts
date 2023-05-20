@@ -8,6 +8,7 @@ import { EnviosComponent } from './componentes/envios/envios.component';
 import { ProductoresComponent } from './componentes/productores/productores.component';
 import { AuthGuard } from './guards/auth.guard';
 import { EstadoCuentaComponent } from './componentes/estado-cuenta/estado-cuenta.component';
+import { GuardiaComponent } from './componentes/guardia/guardia.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,12 @@ const routes: Routes = [
     path: 'estado-cuenta',
     component: EstadoCuentaComponent,
     canActivate: [AuthGuard] 
-  }
+  },
+  {
+    path: 'guardia',
+    component: GuardiaComponent,
+    canActivate: [AuthGuard] 
+  },
   
 ];
 

@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
                 console.log("Hola desde guard " + this.authService.isAuthenticated)
-    if (this.authService.isAuthenticated_forGuard) {
+    if (this.authService.isAuthenticated_forGuard || this.authService.guardia_isAuthenticated_forGuard ) {
       return true;
     } else {
       this.router.navigate(['/login']);
