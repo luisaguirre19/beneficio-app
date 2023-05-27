@@ -21,7 +21,7 @@ export class SolCuentaComponent {
   }
 
   traer_datos(){
-    this.sqlService.getDataProductor("cuenta").subscribe(resp=>{
+    this.sqlService.postData_productor("cuenta_pendiente",{"correo":"beneficio"}).subscribe(resp=>{
      this.tableData = resp
    })
  }
@@ -35,7 +35,10 @@ export class SolCuentaComponent {
  }
 
  desactivar_cuenta(id){
-
+  this.sqlService.postData_productor("rechaza_cuenta",{"id_generico":id})
+  .subscribe(data=>{
+        this.traer_datos()
+  })
  }
 }
 

@@ -8,10 +8,10 @@ import { Observable, throwError, from } from 'rxjs';
 })
 export class SqlService {
  // base_path:string = 'https://coffee-benef.azurewebsites.net/api/count'
-   base_path:string = 'http://localhost:8091/api/'
-  // base_path_productor:string = 'http://localhost:8097/api/'
-  //base_path:string = 'https://coffee-benef.azurewebsites.net/api/'
-  base_path_productor:string = 'https://coffee-dv.azurewebsites.net/api/'
+  //  base_path:string = 'http://localhost:8091/api/'
+  //  base_path_productor:string = 'http://localhost:8097/api/'
+  base_path:string = 'https://coffee-benef.azurewebsites.net/api/'
+ base_path_productor:string = 'https://coffee-dv.azurewebsites.net/api/'
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -82,5 +82,15 @@ export class SqlService {
     retry(2),
     catchError(this.handleError)
   )
+}
+
+postData_productor(ruta:string, item) {
+  return this.http
+   .post(this.base_path_productor + ruta,JSON.stringify(item), this.httpOptions)
+   .pipe(
+     retry(2),
+     catchError(this.handleError)
+   )
+   
 }
 }

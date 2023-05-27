@@ -33,9 +33,11 @@ export class SolInscripcionComponent {
   }
 
   activar_cuenta(id:number){
-    this.sqlService.putData("count","id_usuario",id,"estado","A").subscribe((resp)=>{
-      console.log("regreso " + resp)
-      this.traer_datos()
+    this.sqlService.putData("count","id_usuario",id,"estado","A").subscribe((data)=>{
+      alert("enviamos " + data[0].resp)
+      this.sqlService.postData_productor("login",{"correo":data[0].resp}).subscribe((resp)=>{
+        this.traer_datos()
+      }) 
     })
   }
   
