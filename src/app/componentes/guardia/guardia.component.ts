@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { SqlService } from 'src/app/servicios/sql.service';
+import { DatosQrComponent } from "../datos-qr/datos-qr.component";
 
 @Component({
   selector: 'app-guardia',
@@ -10,26 +12,19 @@ export class GuardiaComponent {
   id
   respuesta
   constructor(
-    private sqlService:SqlService
+    private sqlService:SqlService,
+    private dialog: MatDialog
   ){  }
 
   onSubmit(){
-    console.log("consultamos " + this.id)
-    this.sqlService.postData("guardia",{
-        "codigo_qr":this.id
-     })
-     .subscribe(data=>{
-      alert(data[0].resp)
-        // this.sqlService.postData_beneficio("cuenta",{
-        //     "etiqueta":this.etiqueta,
-        //     "peso":this.peso,
-        //     "parcialidades":this.parcialidad,
-        //     "correo":this.authService.correo_usuario,
-        //     "id_solicitud_prod":data[0].resp
-        // })
-        // .subscribe(data=>{
-        //})
-     })
+    const dialogRef = this.dialog.open(DatosQrComponent,{
+      data: {info: this.id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
+
+
 
 }

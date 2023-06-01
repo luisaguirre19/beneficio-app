@@ -26,17 +26,29 @@ export class SolInscripcionComponent {
   }
 
 
-  traer_datos(){
+  traer_datos(element?){
      this.sqlService.getData("count").subscribe(resp=>{
       this.tableData = resp
+
+      if(element){
+           this.sqlService.postData("envio_correo", {
+          "asunto":"Cuenta autorizada",
+          "msg":"Tu cuenta ha sido autorizada.",
+          "receptor":element.correo,
+          "para":element.nombres + ' ' + element.apellidos
+        }).subscribe(re=>{
+          alert("se envia correo para notificar al usuario")
+        })
+      }
     })
   }
 
-  activar_cuenta(id:number){
-    this.sqlService.putData("count","id_usuario",id,"estado","A").subscribe((data)=>{
-      alert("enviamos " + data[0].resp)
+  activar_cuenta(element){
+    alert(element.correo)
+    this.sqlService.putData("count","id_usuario",Number(element.id_login),"estado","A").subscribe((data)=>{
       this.sqlService.postData_productor("login",{"correo":data[0].resp}).subscribe((resp)=>{
-        this.traer_datos()
+  
+        this.traer_datos(element)
       }) 
     })
   }

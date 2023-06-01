@@ -25,6 +25,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EstadoCuentaComponent } from './componentes/estado-cuenta/estado-cuenta.component';
 import { GuardiaComponent } from './componentes/guardia/guardia.component';
+import { DatosQrComponent } from './componentes/datos-qr/datos-qr.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,11 @@ import { GuardiaComponent } from './componentes/guardia/guardia.component';
     EnviosComponent,
     ProductoresComponent,
     EstadoCuentaComponent,
-    GuardiaComponent
+    GuardiaComponent,
+    DatosQrComponent
   ],
   imports: [
+    SlickCarouselModule,
     MatDialogModule,
     BrowserModule,
     FormsModule,
