@@ -22,6 +22,7 @@ export class GuardiaComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.id =""
     });
   }
 
