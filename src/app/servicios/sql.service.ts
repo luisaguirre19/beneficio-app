@@ -10,7 +10,7 @@ export class SqlService {
  // base_path:string = 'https://coffee-benef.azurewebsites.net/api/count'
   //  base_path:string = 'http://localhost:8091/api/'
   //  base_path_productor:string = 'http://localhost:8097/api/'
-  base_path:string = 'https://coffee-benef.azurewebsites.net/api/'
+ base_path:string = 'https://coffee-benef.azurewebsites.net/api/'
  base_path_productor:string = 'https://coffee-dv.azurewebsites.net/api/'
 
   httpOptions = { 
